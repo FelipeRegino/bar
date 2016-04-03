@@ -20,8 +20,8 @@ public class Main extends AppCompatActivity {
 
     private Button button;
     private EditText pessoas,conta,gorjeta;
-    private float resultado=0, ValorConta=0, ValorGorjeta=0;
-    private int Qpessoas=0;
+    private float resultado, ValorConta=0, ValorGorjeta=0;
+    private int Qpessoas = 1;
     private String sult;
 
     @Override
@@ -47,12 +47,23 @@ public class Main extends AppCompatActivity {
                     Qpessoas = Integer.parseInt(p);
                     ValorConta = Float.parseFloat(c);
                     ValorGorjeta = Float.parseFloat(g);
+
+                    resultado = (ValorConta+ValorGorjeta)/Qpessoas;
+                }
+                if (pessoas.length()!=0 && conta.length()!=0 && gorjeta.length()==0){
+                    String p = pessoas.getText().toString();
+                    String c = conta.getText().toString();
+
+                    Qpessoas = Integer.parseInt(p);
+                    ValorConta = Float.parseFloat(c);
+                    ValorGorjeta = 0;
+
+                    resultado = (ValorConta+ValorGorjeta)/Qpessoas;
                 }
 
-                resultado = (ValorConta+ValorGorjeta)/Qpessoas;
                 sult = Float.toString(resultado);
 
-                Toast.makeText(Main.this, "feito", Toast.LENGTH_LONG).show();
+                Toast.makeText(Main.this, "Feito", Toast.LENGTH_LONG).show();
             }
         });
     }
