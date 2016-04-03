@@ -1,11 +1,10 @@
 <menu xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    tools:context="trabalho.barzinho.Main">
+    tools:context="trabalho.barzinho.result">
     <item
-        android:id="@+id/result"
+        android:id="@+id/mainwindow"
         android:orderInCategory="100"
-        android:title="Resultado"
+        android:title="Pág. Inicial"
         app:showAsAction="never" />
-
 </menu>

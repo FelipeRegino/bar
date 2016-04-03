@@ -2,8 +2,6 @@ package trabalho.barzinho;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.support.design.widget.FloatingActionButton;
-import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.MenuInflater;
@@ -13,8 +11,6 @@ import android.view.MenuItem;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
-
-import trabalho.com.result;
 
 public class Main extends AppCompatActivity {
 
@@ -62,8 +58,12 @@ public class Main extends AppCompatActivity {
                 }
 
                 sult = Float.toString(resultado);
+                Intent intent = new Intent(Main.this, result.class);
+                intent.putExtra("result", sult);
+                startActivity(intent);
+                //setContentView(R.layout.activity_result);
 
-                Toast.makeText(Main.this, "Feito", Toast.LENGTH_LONG).show();
+                Toast.makeText(Main.this, "Feito. Vá no menu para voltar ao início", Toast.LENGTH_LONG).show();
             }
         });
     }
@@ -84,6 +84,7 @@ public class Main extends AppCompatActivity {
                 intent.putExtra("result", sult);
                 startActivity(intent);
         }
+
         return super.onOptionsItemSelected(item);
     }
 }

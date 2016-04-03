@@ -19,7 +19,7 @@
             </intent-filter>
         </activity>
         <activity
-            android:name="trabalho.com.result"
+            android:name=".result"
             android:label="Resultado"
             android:theme="@style/AppTheme.NoActionBar"></activity>
     </application>
