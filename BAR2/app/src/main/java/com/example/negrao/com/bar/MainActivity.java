@@ -70,13 +70,15 @@ public class MainActivity extends ContaGeradaActivity {
     final EditText editTextServico = (EditText) findViewById(R.id.editTextTaxaServico);
 
 
-    float ValorTotal = Float.valueOf(editTextValorTotal.getText().toString());
+    float ValorTotal = Float.valueOf(editTextValorTotal.getText().toString()); //valor sem a taxa de serviço
     int NumParticipantes = Integer.parseInt(editTextParticipantes.getText().toString());
     int TaxaServico = Integer.parseInt(editTextServico.getText().toString());
 
     float ContaParcial = ValorTotal*(TaxaServico/100);
     float ContaTotal = (ValorTotal+ContaParcial)/NumParticipantes;
-
+    
+    //float TaxaServico = ValorTotal / 10; //10% do valor de consumo
+    //float ContaTotal = (ValorTotal + TaxaServico)/NumParticipantes;
 
 
     }
