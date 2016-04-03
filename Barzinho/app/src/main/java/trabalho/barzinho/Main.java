@@ -10,13 +10,19 @@ import android.view.MenuInflater;
 import android.view.View;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.widget.Button;
 import android.widget.EditText;
+import android.widget.Toast;
 
 import trabalho.com.result;
 
 public class Main extends AppCompatActivity {
 
-    private float resultado;
+    private Button button;
+    private EditText pessoas,conta,gorjeta;
+    private float resultado=0, ValorConta=0, ValorGorjeta=0;
+    private int Qpessoas=0;
+    private String sult;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -25,15 +31,30 @@ public class Main extends AppCompatActivity {
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
-        EditText pessoas = (EditText) findViewById(R.id.pessoas);
-        EditText conta = (EditText) findViewById(R.id.conta);
-        EditText gorjeta = (EditText) findViewById(R.id.gorjeta);
+        pessoas = (EditText) findViewById(R.id.pessoas);
+        conta = (EditText) findViewById(R.id.conta);
+        gorjeta = (EditText) findViewById(R.id.gorjeta);
+        button = (Button) findViewById(R.id.button);
 
-        int Qpessoas = Integer.parseInt(pessoas.getText().toString());
-        float ValorConta = Float.valueOf(conta.getText().toString());
-        float ValorGorjeta = Float.valueOf(gorjeta.getText().toString());
+        button.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if (pessoas.length()!=0 && conta.length()!=0 && gorjeta.length()!=0) {
+                    String p = pessoas.getText().toString();
+                    String c = conta.getText().toString();
+                    String g = gorjeta.getText().toString();
 
-        resultado = (ValorConta+ValorGorjeta)/Qpessoas;
+                    Qpessoas = Integer.parseInt(p);
+                    ValorConta = Float.parseFloat(c);
+                    ValorGorjeta = Float.parseFloat(g);
+                }
+
+                resultado = (ValorConta+ValorGorjeta)/Qpessoas;
+                sult = Float.toString(resultado);
+
+                Toast.makeText(Main.this, "feito", Toast.LENGTH_LONG).show();
+            }
+        });
     }
 
     @Override
@@ -49,7 +70,7 @@ public class Main extends AppCompatActivity {
 
         if (id == R.id.result) {
                 Intent intent = new Intent(Main.this, result.class);
-                intent.putExtra("result", resultado);
+                intent.putExtra("result", sult);
                 startActivity(intent);
         }
         return super.onOptionsItemSelected(item);
